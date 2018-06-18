@@ -40,8 +40,8 @@ public class BugController {
         return new Gson().toJson(new QueryBugListResponse(200,"success",bugInfoList));
     }
 
-    @RequestMapping(value = "/updateBug",method = RequestMethod.POST,headers = "Content-type: application/" )
-    public String updateBug(@RequestParam(value = "bug", required = true) String bug) throws SQLException {
+    @RequestMapping(value = "/updateBug",method = RequestMethod.POST )
+    public String updateBug(@RequestParam(value = "bug") String bug) throws SQLException {
         dbUtils = DBUtils.getInstance();
         BugInfo bugInfo = new Gson().fromJson(bug,BugInfo.class);
         dbUtils.updateBug(bugInfo);
